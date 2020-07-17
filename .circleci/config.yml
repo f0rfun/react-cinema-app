@@ -14,9 +14,6 @@ jobs:
           keys:
             - app-{{ checksum "package.json" }}
             - app-
-      # - run:
-      #     name: Install Yarn
-      #     command: sudo npm install -g yarn
       - run:
           name: Install dependencies
           command: sudo yarn install
@@ -38,7 +35,7 @@ jobs:
           name: Install AWS CLI
           working_directory: /
           command: |
-            sudo apt-get -y qq update
+            sudo apt-get -y -qq update
             sudo apt-get install -y awscli
             sudo apt-get install -y python-pip python-dev build-essential
       - run:
@@ -75,7 +72,7 @@ jobs:
           name: Install AWS CLI
           working_directory: /
           command: |
-            sudo apt-get -y qq update
+            sudo apt-get -y -qq update
             sudo apt-get install -y awscli
             sudo apt-get install -y python-pip python-dev build-essential
       - run:
