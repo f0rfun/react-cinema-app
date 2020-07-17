@@ -14,9 +14,9 @@ jobs:
           keys:
             - app-{{ checksum "package.json" }}
             - app-
-      - run:
-          name: Install Yarn
-          command: sudo npm install -g yarn
+      # - run:
+      #     name: Install Yarn
+      #     command: sudo npm install -g yarn
       - run:
           name: Install dependencies
           command: sudo yarn install
