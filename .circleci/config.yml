@@ -16,10 +16,10 @@ jobs:
             - app-
       - run:
           name: Install Yarn
-          command: npm install -g yarn
+          command: sudo npm install -g yarn
       - run:
           name: Install dependencies
-          command: yarn install
+          command: sudo yarn install
       - save_cache:
           paths:
             - node_modules
