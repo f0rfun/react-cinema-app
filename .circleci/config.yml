@@ -44,7 +44,7 @@ aliases:
 
 jobs:
   build:
-    executors: app-executors
+    executor: app-executor
     steps:
       - checkout
       - *show-current-branch-name
