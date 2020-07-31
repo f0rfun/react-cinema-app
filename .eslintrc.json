@@ -1,11 +1,13 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest": true,
+        "node": true
     },
     "extends": [
         "plugin:react/recommended",
-        "standard"
+        "eslint:recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -20,25 +22,14 @@
     },
     "settings": {
         "react": {
-            "version": "16.0"
+            "version": "detect"
         }
     },
     "plugins": [
         "react"
     ],
+    "parser": "babel-eslint",
     "rules": {
-        "semi": [
-            2,
-            "always"
-        ],
-        "space-before-function-paren": [
-            0,
-            {
-                "anonymous": "always",
-                "named": "always"
-            }
-        ],
-        "camelcase": 0,
-        "no-return-assign": 0
+        "react/prop-types": 0
     }
 }

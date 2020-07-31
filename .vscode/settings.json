@@ -1,0 +1,10 @@
+{
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "html.fixAll.eslint": true,
+        "javascript.fixAll.eslint": true
+    }
+}
