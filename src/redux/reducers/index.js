@@ -3,7 +3,7 @@ import errorReducer from './errorReducer'
 import moviesReducer from './moviesReducer'
 
 const rootReducers = combineReducers({
-    errors: errorReducer,
+  errors: errorReducer,
   moviesReducer: moviesReducer
 })
 
