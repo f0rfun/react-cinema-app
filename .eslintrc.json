@@ -5,7 +5,11 @@
     "jest": true,
     "node": true
   },
-  "extends": ["plugin:react/recommended", "eslint:recommended", "react-hooks"],
+  "extends": [
+    "plugin:react/recommended",
+    "eslint:recommended",
+    "plugin:react-hooks/recommended"
+  ],
   "plugins": ["react", "react-hooks"],
   "globals": {
     "Atomics": "readonly",
