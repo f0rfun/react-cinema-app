@@ -92,7 +92,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == 'master' ]
             then
               aws --region ${AWS_REGION} s3 sync ~/repo/build s3://${AWS_S3_PRODUCTION} --delete
-            elif [ "${CIRCLE_BRANCH}" == 'staging']
+            elif [ "${CIRCLE_BRANCH}" == 'staging' ]
             then
               aws --region ${AWS_REGION} s3 sync ~/repo/build s3://${AWS_S3_STAGING} --delete
             else
@@ -113,18 +113,18 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == 'master' ]
             then
               aws cloudfront create-invalidation --distribution-id ${PROD_DISTRIBUTION_ID} --paths /\*
-            elif [ "${CIRCLE_BRANCH}" == 'staging']
+            elif [ "${CIRCLE_BRANCH}" == 'staging' ]
             then
               aws cloudfront create-invalidation --distribution-id ${STAGING_DISTRIBUTION_ID} --paths /\*
             else
               aws cloudfront create-invalidation --distribution-id ${DEV_DISTRIBUTION_ID} --paths /\*
             fi
-      
+
   notify-via-slack:
     executor: slack-executor
     steps:
       - slack/notify:
-          message: "${CIRCLE_BRANCH} branch deployment to aws s3 and cloudfront successful."
+          message: '${CIRCLE_BRANCH} branch deployment to aws s3 and cloudfront successful.'
           webhook: $CIRCLECI_SLACK_WEBHOOK
       - slack/status:
           webhook: $CIRCLECI_SLACK_WEBHOOK
@@ -150,7 +150,7 @@ workflows:
               only:
                 - development
                 - staging
-                - master                             
+                - master
       - deploy-to-aws-s3:
           requires:
             - prettier
@@ -171,9 +171,9 @@ workflows:
                 - master
       - notify-via-slack:
           requires:
-            - deploy-to-aws-cloudfront    
+            - deploy-to-aws-cloudfront
           filters:
-            branches:              
+            branches:
               only:
                 - development
                 - staging
