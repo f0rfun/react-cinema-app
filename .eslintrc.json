@@ -5,15 +5,7 @@
     "jest": true,
     "node": true
   },
-<<<<<<< HEAD
-  "extends": [
-    "plugin:react/recommended",
-    "eslint:recommended",
-    "plugin:react-hooks/recommended"
-  ],
-=======
   "extends": ["plugin:react/recommended", "eslint:recommended"],
->>>>>>> 018e3e9... [feature-header] Added carousel and autoslide
   "plugins": ["react", "react-hooks"],
   "globals": {
     "Atomics": "readonly",
