@@ -9,17 +9,17 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 700px;
+  height: 100vh;
   color: #fff;
   text-align: center;
 }
 
 .carousel-nav {
-  align-content: center;
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  order: 2;
+  height: 0;
+  left: 0;
+  position: absolute;
+  top: calc(100% - 100px);
+  width: 100%;
 }
 
 .carousel-navButton {

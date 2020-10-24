@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import './Carousel.scss'
 
@@ -10,7 +10,6 @@ const Carousel = (props) => {
     slideIndex: 0
   })
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [sliderInterval, setSliderInterval] = useState(0)
 
   const { slideImage, slideIndex } = slide
 
@@ -30,7 +29,7 @@ const Carousel = (props) => {
     }))
   }
 
-  const next = () => {
+  const next = useCallback(() => {
     let index = currentIndex
     if (currentIndex < images.length) {
       index += 1
@@ -46,7 +45,7 @@ const Carousel = (props) => {
       slideImage: images[index],
       slideIndex: index
     }))
-  }
+  }, [currentIndex, images])
 
   useEffect(() => {
     if (autoSlide) {
@@ -54,15 +53,11 @@ const Carousel = (props) => {
         next()
       }, 5000)
 
-      setSliderInterval(timeInterval)
-
       return () => {
         clearInterval(timeInterval)
-        clearInterval(sliderInterval)
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slideIndex, autoSlide])
+  }, [autoSlide, next])
 
   const RenderArrows = () => {
     return (
@@ -81,6 +76,7 @@ const Carousel = (props) => {
 
   const RenderIndicators = (props) => {
     const { currentCarousel } = props
+
     const indicators = images.map((anImage, index) => {
       const buttonCssClass =
         index === currentCarousel
@@ -95,17 +91,17 @@ const Carousel = (props) => {
   return (
     <>
       <div className="carousel">
-        <div className="carousel-slides">
-          {images && images.length && slideImage && (
-            <div
-              className="slides-image"
-              style={{
-                backgroundImage: `url(${slideImage.url})`
-              }}
-            />
-          )}
-        </div>
+        {/* <div className="carousel-slides"> */}
+        {images && images.length && slideImage && (
+          <div
+            className="slides-image"
+            style={{
+              backgroundImage: `url(${slideImage.url})`
+            }}
+          />
+        )}
         <RenderIndicators currentCarousel={slideIndex} />
+        {/* </div> */}
         <RenderArrows />
       </div>
     </>
